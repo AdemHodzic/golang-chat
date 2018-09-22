@@ -11,6 +11,12 @@ func main() {
 	r := gin.Default()
 	m := melody.New()
 
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Hello world"
+		})
+	})
+
 	r.GET("/ws", func(c *gin.Context) {
 		m.HandleRequest(c.Writer, c.Request)
 	})
