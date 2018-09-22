@@ -1,13 +1,14 @@
 package main
 
 import (
-
+	"os"
 	"github.com/gin-gonic/gin"
 	"github.com/olahol/melody"
 )
 
 func main() {
-
+	
+	port := os.Getenv("PORT")
 	r := gin.Default()
 	m := melody.New()
 
@@ -25,6 +26,6 @@ func main() {
 		m.Broadcast(msg)
 	})
 
-	r.Run(":5000")
+	r.Run(port)
 
 }
