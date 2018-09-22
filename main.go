@@ -11,7 +11,9 @@ import (
 func determineListenAdress() (string, error) {
 	port := os.Getenv("PORT")
 	if port == "" {
+		log.Fatalf("CAN'T FINT $PORT\n")
 		return "", fmt.Errorf("$PORT not set!")
+	
 	}
 
 	return ":" + port, nil
