@@ -1,1 +1,1 @@
-web: golang-chat
+web: ./golang-chat
