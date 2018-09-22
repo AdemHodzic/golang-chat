@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/gin-gonic/gin"
-	"github.com/olahol/melody"
+	"vendor/github.com/gin-gonic/gin"
+	"vendor/github.com/olahol/melody"
 )
 
 func main() {
