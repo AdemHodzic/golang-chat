@@ -4,11 +4,28 @@ import (
 	"os"
 	"github.com/gin-gonic/gin"
 	"github.com/olahol/melody"
+	"log"
+	"fmt"
 )
+
+func determineListenAdress() (string, error) {
+	port := os.Getenv("PORT")
+	if port == "" {
+		return "", fmt.Errorf("$PORT not set!")
+	}
+
+	return ":" + port, nil
+
+}
 
 func main() {
 	
-	port := os.Getenv("PORT")
+	addr, err := determineListenAdress()
+	
+	if err != nil {
+		log.Fatal(err)
+	}
+	
 	r := gin.Default()
 	m := melody.New()
 
@@ -26,6 +43,5 @@ func main() {
 		m.Broadcast(msg)
 	})
 
-	r.Run(port)
-
+	r.Run(addr)
 }
